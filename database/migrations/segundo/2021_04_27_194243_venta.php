@@ -19,7 +19,7 @@ class Venta extends Migration
             $table->integer('precio_final');
             $table->integer('iva');
             $table->unsignedBigInteger('idU');            
-            $table->foreign('idU')->references('idU')->on('usuario');
+            $table->foreign('idU')->references('id')->on('users');
             $table->timestamps();
         });
     }

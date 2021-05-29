@@ -16,14 +16,13 @@ class Producto extends Migration
         Schema::create('producto', function (Blueprint $table) {
             $table->id('idP');
             $table->string('nombre');
+            $table->string('imagen')->nullable();
             $table->string('marca');
             $table->string('descripcion');
             $table->integer('precio');
             $table->integer('stock');
             $table->boolean('estado');
             $table->boolean('oferta');
-            $table->unsignedBigInteger('idImagen');
-            $table->foreign('idImagen')->references('idImagen')->on('imagen');
             $table->timestamps();
         });
     }

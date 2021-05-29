@@ -8,6 +8,8 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <!-- LOGO -->
+        <link rel="icon" href="image\WhatsApp Image 2021-05-10 at 23.47.04.ico">
 
         <!-- Styles -->
         <style>
@@ -21,25 +23,26 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-white dark:bg-white sm:items-center py-4 sm:pt-0">
+        <div class="relative flex items-top justify-center min-h-screen bg-white dark:bg-black sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
+                        <a href="{{ url('/inicio') }}" class="text-sm text-black underline">{{__('Volve a mi cuenta')}}</a>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
+                        <a href="{{ route('login') }}" class="text-sm text-black underline">{{__('Log in')}}</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-black underline">{{__('Register')}}</a>
                         @endif
                     @endauth
                 </div>
             @endif
-            <div class="mt-8 bg-white bg-white dark:bg-black overflow-hidden shadow sm:rounded-lg">
-                <div class="grid grid-cols-1 md:grid-cols-2">
-                    
-                </div>
+            
+            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0 ">
+                    <img src="image\WhatsApp Image 2021-05-10 at 23.47.04.jpeg" alt="logo FERRETRUCK">
+                </div>             
             </div>
-       </div>
+        </div>
     </body>
 </html>

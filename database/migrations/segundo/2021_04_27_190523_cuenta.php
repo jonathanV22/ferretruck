@@ -18,7 +18,7 @@ class Cuenta extends Migration
             $table->integer('numeroCuenta');
             $table->unsignedBigInteger('idU');
             $table->unsignedBigInteger('idtipoC');
-            $table->foreign('idU')->references('idU')->on('usuario');
+            $table->foreign('idU')->references('id')->on('users');
             $table->foreign('idtipoC')->references('idTipoC')->on('tipoCuenta');
             $table->timestamps();
         });
