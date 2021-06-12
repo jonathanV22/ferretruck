@@ -14,7 +14,7 @@ class Imagen extends Migration
     public function up()
     {
         Schema::create('imagen', function (Blueprint $table) {
-            $table->id('idImagen');
+            $table->id();
             $table->string('nombre');            
             $table->timestamps();
         });

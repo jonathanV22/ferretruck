@@ -14,15 +14,15 @@ class DetalleVenta extends Migration
     public function up()
     {
         Schema::create('detalleVenta', function (Blueprint $table) {
-            $table->id('idDetalle');
+            $table->id();
             $table->unsignedBigInteger('noFolio');
             $table->unsignedBigInteger('idP');
             $table->integer('cantidadTotal');
             $table->integer('precioTotal');
             $table->integer('estadoVenta');
             $table->integer('desc');
-            $table->foreign('noFolio')->references('noFolio')->on('venta');
-            $table->foreign('idP')->references('idP')->on('producto');
+            $table->foreign('noFolio')->references('id')->on('venta');
+            $table->foreign('idP')->references('id')->on('producto');
             $table->timestamps();
         });
     }

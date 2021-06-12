@@ -14,7 +14,7 @@ class Venta extends Migration
     public function up()
     {
         Schema::create('venta', function (Blueprint $table) {
-            $table->id('noFolio');
+            $table->id();
             $table->dateTime('fecha');
             $table->integer('precio_final');
             $table->integer('iva');

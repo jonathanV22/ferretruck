@@ -14,7 +14,7 @@ class Producto extends Migration
     public function up()
     {
         Schema::create('producto', function (Blueprint $table) {
-            $table->id('idP');
+            $table->id('id');
             $table->string('nombre');
             $table->string('imagen')->nullable();
             $table->string('marca');

@@ -3,6 +3,8 @@
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\RolControlller;
+use App\Http\Controllers\UserController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Profiler\Profile;
@@ -21,6 +23,9 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/home-page', function () {
+    return view('home-page');
+});
 
 
 Route::group(['middleware'=>'auth'],function(){
@@ -33,20 +38,12 @@ Route::group(['middleware'=>'auth'],function(){
     Route::view('perfil', 'perfil')->name('perfil');
 
     Route::put('perfil',[PerfilController::class,'update'])->name('perfil.update');
-
+//Rutas users
+    
+    Route::resource('/users', UserController::class);
 //Fin rutas perfil
 //Rutas de roles
-
-    Route::resource('roles', RolController::class);
-
-    Route::post('/roles/create', [RolController::class,'store'])->name('roles.store');
-
-    Route::get('/roles/{role}',[RolController::class,'show'])->name('roles.show');
-
-    Route::get('/roles/{role}/edit',[RolController::class,'edit'])->name('roles.edit');
-
-    Route::put('/roles/{role}', [RolController::class, 'update'])->name('roles.update');
-
+    Route::resource('/roles',RolControlller::class);
 //fin rutas de roles
 //Rutas productos
     /*Route::get('/productos', [ProductoController::class,'index'])->name('productos.index');

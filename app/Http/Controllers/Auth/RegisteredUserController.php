@@ -31,26 +31,26 @@ class RegisteredUserController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
+
     {
         $request->validate([
             'name' => 'required|string|max:255',
             'apellido'=> 'required|string|max:255',
-            'rut'=> 'required|min:7|max:12',
+            'foto'=>'required|mimes:jpeg,png,jpg,JPEG,PNG,JPG',
+            'rut'=> 'required|min:7|max:12|cl_rut',
             'email' => 'required|string|email|max:255|unique:users',
+            'idTipoU'=> 'required',
             'telefono' =>'required|min:9|max:9',
             'password' => 'required|string|confirmed|min:8',
         ]);
+        $usuario=request()->except('_token','password_confirmation');
+        if($request->hasFile('foto')){
+            $usuario['foto'] = $request->file('foto')->store('uploads','public');
+        }
+        $usuario['password']=Hash::make($request->password);
 
-        $user = User::create([
-            'name' => $request->name,
-            'apellido' => $request->apellido,
-            'rut' => $request->rut,
-            'direccion' => $request->direccion,
-            'telefono' => $request->telefono,
-            'email' => $request->email,
-            'idTipoU'=> $request->tipo,
-            'password' => Hash::make($request->password),
-        ]);
+        $user = User::create( $usuario);
+        
 
         event(new Registered($user));
 

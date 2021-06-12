@@ -5,11 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Rol extends Model
+class RolController extends Model
 {
     use HasFactory;
-    protected $connection = 'mysql';
-    public $timestamps = true;
-	protected $table = 'rols';
-    protected $guarded =[];
 }

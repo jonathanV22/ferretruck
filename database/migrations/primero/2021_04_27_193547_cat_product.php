@@ -14,11 +14,11 @@ class CatProduct extends Migration
     public function up()
     {
         Schema::create('catProduct', function (Blueprint $table) {
-            $table->id('idCatP');
+            $table->id('id');
             $table->unsignedBigInteger('idP');
             $table->unsignedBigInteger('idcat');
-            $table->foreign('idP')->references('idP')->on('producto');
-            $table->foreign('idcat')->references('idcat')->on('categoria');
+            $table->foreign('idP')->references('id')->on('producto');
+            $table->foreign('idcat')->references('id')->on('categoria');
             $table->timestamps();
         });
     }

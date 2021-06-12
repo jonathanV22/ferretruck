@@ -14,12 +14,12 @@ class Cuenta extends Migration
     public function up()
     {
         Schema::create('cuenta', function (Blueprint $table) {
-            $table->id('id');
+            $table->id();
             $table->integer('numeroCuenta');
             $table->unsignedBigInteger('idU');
             $table->unsignedBigInteger('idtipoC');
             $table->foreign('idU')->references('id')->on('users');
-            $table->foreign('idtipoC')->references('idTipoC')->on('tipoCuenta');
+            $table->foreign('idtipoC')->references('id')->on('tipoCuenta');
             $table->timestamps();
         });
     }

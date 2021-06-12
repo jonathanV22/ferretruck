@@ -14,7 +14,7 @@ class TipoCuenta extends Migration
     public function up()
     {
         Schema::create('tipoCuenta', function (Blueprint $table) {
-            $table->id('idTipoC');
+            $table->id();
             $table->string('nombre');            
             $table->timestamps();
         });

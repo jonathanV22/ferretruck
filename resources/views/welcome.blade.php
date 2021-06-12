@@ -23,11 +23,11 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-white dark:bg-black sm:items-center py-4 sm:pt-0">
+        <div class="relative flex items-top justify-center min-h-screen bg-blue-800 dark:bg-black sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/inicio') }}" class="text-sm text-black underline">{{__('Volve a mi cuenta')}}</a>
+                        <a href="{{ url('/inicio') }}" class="text-sm text-black underline">{{__('Volver a mi cuenta')}}</a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-black underline">{{__('Log in')}}</a>
 

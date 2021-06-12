@@ -35,5 +35,15 @@
                 {{ $slot }}
             </main>
         </div>
+        <div class="p-5 bg-white text-gray-800 flex justify-between">
+            <!--- izquierda--->
+            <div>
+                
+            </div>
+            <!--- derecha--->
+            <div class="flex items-center">
+                Copyright &copy; Ferretruck 2021 
+            </div>
+        </div>
     </body>
 </html>

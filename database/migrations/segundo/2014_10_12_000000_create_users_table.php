@@ -17,11 +17,12 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table -> string('apellido');
+            $table->string('foto');
             $table -> string('rut');
             $table-> string('direccion');
             $table -> integer('telefono');
             $table -> unsignedBigInteger('idTipoU');
-            $table -> foreign('idTipoU') -> references('id_r')->on('rols') ;
+            $table -> foreign('idTipoU') -> references('id')->on('rols') ;
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
