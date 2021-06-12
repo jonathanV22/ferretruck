@@ -6,7 +6,7 @@ use App\Models\Rol;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
    public function index(){
@@ -23,11 +23,22 @@ class UserController extends Controller
     public function store(Request $request){
 
         //$usuario=request()->all();
-
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'apellido'=> 'required|string|max:255',
+            'foto'=>'required|mimes:jpeg,png,jpg,JPEG,PNG,JPG',
+            'rut'=> 'required|min:7|max:12|cl_rut',
+            'email' => 'required|string|email|max:255|unique:users',
+            'idTipoU'=> 'required',
+            'telefono' =>'required|min:9|max:9',
+            'password' => 'required|string|confirmed|min:8',
+        ]);
         $usuario=request()->except('_token','password_confirmation');
         if($request->hasFile('foto')){
             $usuario['foto']=$request->file('foto')->store('uploads','public');
         }
+        $usuario['password']=Hash::make($request->password);
+        return response()->json($usuario);
        User::insert( $usuario);
         return redirect('users');
     }
@@ -44,21 +55,28 @@ class UserController extends Controller
     }
 
     public function update(Request $request, $id){
-      $usuario=request()->except(['_token','_method']);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'apellido'=> 'required|string|max:255',
+            'foto'=>'required|mimes:jpeg,png,jpg,JPEG,PNG,JPG',
+            'rut'=> 'required|min:7|max:12|cl_rut',
+            'email' => 'required|string|email|max:255|unique:users',
+            'idTipoU'=> 'required',
+            'telefono' =>'required|min:9|max:9',
+        ]);
+         $usuario=request()->except(['_token','_method']);
+        if($request->hasFile('foto')){
+            $user= User::findOrFail($id);
+            Storage::delete('public/'.$user->foto);
+            $usuario['foto']=$request->file('foto')->store('uploads','public');
+        } 
+        User::where('id','=',$id)->update($usuario);     
 
-      if($request->hasFile('foto')){
         $user= User::findOrFail($id);
-        Storage::delete('public/'.$user->foto);
-        $usuario['foto']=$request->file('foto')->store('uploads','public');
-      } 
 
-      User::where('id','=',$id)->update($usuario);     
+        $roles=Rol::all();
 
-      $user= User::findOrFail($id);
-
-      $roles=Rol::all();
-
-      return view('users.edit',compact('user','roles'));
+        return view('users.edit',compact('user','roles'));
 
     }
 

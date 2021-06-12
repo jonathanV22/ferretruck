@@ -50,7 +50,7 @@
               <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Seleccione un rol</label>
               <select class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent" name="idTipoU">
                 @forelse ($roles as $rol)
-                <option value="{{$rol->id_r}}">{{$rol->nombre}}</option>
+                <option value="{{$rol->id}}">{{$rol->nombre}}</option>
                 @empty
                 <option :value="old('')">No existen roles</option>         
                 @endforelse

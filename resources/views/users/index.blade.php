@@ -34,9 +34,9 @@
                                 <td class="py-3 px-6 text-center">
                                     <span class="py-1 px-3">{{isset($user->email)?$user->email:'No tiene email'}}</span>
                                 </td>
-                                <td>
+                                <td class="flex item-center justify-center">
                                     @if (isset($user->foto))
-                                    <img src="{{ asset('storage').'/'.$user->foto}}" alt="foto perfil" class="w-14 h-14 mr-8 ml-8 object-center">
+                                    <img src="{{ asset('storage').'/'.$user->foto}}" alt="foto perfil" class="w-14 h-14 mr-8 ml-8 ">
                                     @else
                                     <span class="py-1 px-3">No tiene imagen</span>
                                     @endif                                    
@@ -46,14 +46,29 @@
                                 </td>  
                                 
                                 <td class="py-3 px-6 text-center">
-
-                                    <a href="{{url('/users/'.$user->id.'/edit')}}">Editar</a>
-
-                                    <form action="{{url('/users/'.$user->id)}}" method="post">
-                                        @method('DELETE')
-                                        @csrf                                                                                   
-                                        <input type='submit'  onclick="return(confirm('Seguro que decea borrar al usuario '))"value="Borrar">                                              
-                                    </form> 
+                                    <div class="flex item-center justify-center">
+                                        <div class="w-4 mr-2 transform hover:text-green-500 hover:scale-110">
+                                            <a  href="{{url('/users/'.$user->id.'/edit')}}"">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                            </svg>
+                                            </a>
+                                        </div>
+                                        <div class="w-4 mr-2 transform hover:text-red-500 hover:scale-110">
+                                            <form  action="{{url('/users/'.$user->id)}}" method="post">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button onclick="return(confirm('¿ Seguro que decea borra este  ?'))" >
+                                                <svg width="16" height="16" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32" style="transform: rotate(360deg);">
+                                                <path d="M12 12h2v12h-2z" fill="currentColor"></path>
+                                                <path d="M18 12h2v12h-2z" fill="currentColor"></path>
+                                                <path d="M4 6v2h2v20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8h2V6zm4 22V8h16v20z" fill="currentColor"></path>
+                                                <path d="M12 2h8v2h-8z" fill="currentColor"></path>
+                                                </svg>
+                                            </button>
+                                            </form>      
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>                             
                             @endforeach                          

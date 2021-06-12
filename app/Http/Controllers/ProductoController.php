@@ -25,7 +25,7 @@ class ProductoController extends Controller
             $datos['imagen']=$request->file('imagen')->store('uploads','public');
         }
         Producto::insert($datos);
-        return response()->json($datos);
+        return redirect('productos');
     }
     public function destroy($ids){
 

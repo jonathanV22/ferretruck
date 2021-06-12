@@ -21,21 +21,21 @@
                                 <th class="py-3 px-6 text-center">Descripción</th>
                                 <th class="py-3 px-6 text-center">Precio</th>
                                 <th class="py-3 px-6 text-center">Stock</th>
-                                <th class="py-3 px-6 text-center">
+                                <th class="py-3 px-6 text-center"></th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-600 text-sm font-light">
                             @forelse ($productos as $producto) 
                             <tr>
                                 <td class="py-3 px-6 text-center">
-                                   <span class="py-1 px-3">{{ $producto->idP}}</span>
+                                   <span class="py-1 px-3">{{ $producto->id}}</span>
                                 </td>
                                 <td class="py-3 px-6 text-center">
                                     <span class="py-1 px-3">{{ $producto->nombre}}</span>
                                  </td>
-                                 <td class="py-3 px-6 text-center">
+                                 <td class="flex item-center justify-center text-center">
                                     @if (isset($producto->imagen))
-                                    <img src=">{{ asset('storage').'/'.$producto->imagen}}" alt="foto perfil">
+                                    <img src="{{ asset('storage').'/'.$producto->imagen}}" alt="foto perfil"  class="w-14 h-14 mr-8 ml-8 ">
                                     @else
                                     <span class="py-1 px-3">No tiene imagen</span>
                                     @endif

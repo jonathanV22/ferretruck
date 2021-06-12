@@ -34,13 +34,14 @@
                     <x-input id="descripcion" class="block mt-1 w-full" type="text" name="descripcion" :value="old('descripcion')" required autofocus />
                 </div>
                     <!-- Precio -->
-                    <div class="mt-4">
+                <div class="mt-4">
                     <x-label for="precio" :value="__('Precio')" />
     
                     <x-input id="precio" class="block mt-1 w-full" type="number" name="precio" :value="old('precio')" required autofocus />
                 </div>
+                
                     <!-- Telefono -->
-                    <div class="mt-4">
+                <div class="mt-4">
                     <x-label for="stock" :value="__('Stock')" />
     
                     <x-input id="stock" class="block mt-1 w-full" type="number" name="stock" :value="old('stock')" required autofocus />
