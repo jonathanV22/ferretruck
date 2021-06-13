@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\ProductoController;
@@ -45,6 +46,9 @@ Route::group(['middleware'=>'auth'],function(){
 //Rutas de roles
     Route::resource('/roles',RolControlller::class);
 //fin rutas de roles
+//rutas categorias
+    Route::resource('/categorias',CategoriaController::class);
+//fin rutas categorias
 //Rutas productos
     /*Route::get('/productos', [ProductoController::class,'index'])->name('productos.index');
     Route::get('/productos/create', [ProductoController::class,'create'])->name('productos.create');*/

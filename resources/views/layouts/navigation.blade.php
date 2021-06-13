@@ -29,6 +29,12 @@
                     </x-nav-link>
                  
                 </div>
+                 <!-- Navigation Links -->
+                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="{{url('categorias')}}" >
+                        {{ __('Categorias productos') }}
+                    </x-nav-link>
+                </div>
                    <!-- Navigation Links 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('productos.index')" :active="request()->routeIs('productos.index')">
@@ -94,6 +100,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('productos.index')" :active="request()->routeIs('productos.index')">
                 {{ __('Productos') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{url('categorias')}}">
+                {{ __('Categorias') }}
             </x-responsive-nav-link>
         </div>
         <!-- Responsive Settings Options -->

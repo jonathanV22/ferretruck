@@ -36,7 +36,7 @@
                                 </td>
                                 <td class="flex item-center justify-center">
                                     @if (isset($user->foto))
-                                    <img src="{{ asset('storage').'/'.$user->foto}}" alt="foto perfil" class="w-14 h-14 mr-8 ml-8 ">
+                                    <img src="{{ asset('storage').'/'.$user->foto}}" alt="foto perfil"  class="w-12 h-12 mr-8 ml-8 rounded-full border-gray-200 border transform hover:scale-125">
                                     @else
                                     <span class="py-1 px-3">No tiene imagen</span>
                                     @endif                                    

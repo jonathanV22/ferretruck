@@ -26,7 +26,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'apellido'=> 'required|string|max:255',
-            'foto'=>'required|mimes:jpeg,png,jpg,JPEG,PNG,JPG',
+            'foto'=>'mimes:jpeg,png,jpg,JPEG,PNG,JPG',
             'rut'=> 'required|min:7|max:12|cl_rut',
             'email' => 'required|string|email|max:255|unique:users',
             'idTipoU'=> 'required',
@@ -58,18 +58,21 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'apellido'=> 'required|string|max:255',
-            'foto'=>'required|mimes:jpeg,png,jpg,JPEG,PNG,JPG',
+            'foto'=>'mimes:jpeg,png,jpg,JPEG,PNG,JPG',
             'rut'=> 'required|min:7|max:12|cl_rut',
-            'email' => 'required|string|email|max:255|unique:users',
             'idTipoU'=> 'required',
             'telefono' =>'required|min:9|max:9',
         ]);
-         $usuario=request()->except(['_token','_method']);
+
+        $usuario=request()->except(['_token','_method']);
+
         if($request->hasFile('foto')){
             $user= User::findOrFail($id);
             Storage::delete('public/'.$user->foto);
             $usuario['foto']=$request->file('foto')->store('uploads','public');
         } 
+        //return response()->json( $usuario);
+
         User::where('id','=',$id)->update($usuario);     
 
         $user= User::findOrFail($id);
