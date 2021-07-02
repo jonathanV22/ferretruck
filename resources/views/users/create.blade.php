@@ -17,32 +17,32 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
               <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Nombre</label>
-              <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent" type="text" placeholder="ingrese nombre" name="name" :value="old('name')"/>
+              <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent" type="text" placeholder="ingrese nombre" name="name" />
             </div>
             <div class="grid grid-cols-1">
               <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Apellido</label>
-              <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent" type="text" placeholder="ingrese apellido" name="apellido" :value="old('apellido')"/>
+              <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent" type="text" placeholder="ingrese apellido" name="apellido"/>
             </div>
           </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
               <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Rut</label>
-              <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent" type="text" placeholder="Ingrese Rut"name="rut" :value="old('rut')" />
+              <input id="rut" class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent" type="text" placeholder="Ingrese Rut" name="rut"/>
             </div>
             <div class="grid grid-cols-1">
               <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Email</label>
-              <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent" type="email" placeholder="Ingrese email" name="email" :value="old('email')"/>
+              <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent" type="email" placeholder="Ingrese email" name="email" />
             </div>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
             <div class="grid grid-cols-1">
               <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Dirección</label>
-              <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent" type="text" placeholder="Ingrese direccion" name="direccion" :value="old('direccion')" />
+              <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent" type="text" placeholder="Ingrese direccion" name="direccion"  />
             </div>
             <div class="grid grid-cols-1">
               <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Telefono</label>
-              <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent" type="text" placeholder="Ingrese telefono" name="telefono" :value="old('telefono')"/>
+              <input class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent" type="text" placeholder="Ingrese telefono" name="telefono"/>
             </div>
         </div>
        
@@ -85,6 +85,21 @@
         <button class='w-auto bg-green-500 hover:bg-green-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Aceptar</button>
         </div>
     </form>
+    <script src="js\jquery.js"></script>
+    <script src="inputmask\dist\jquery.inputmask.js"></script>
+    <script>
+      $(document).ready(function(){
+        var rut = document.getElementById("rut");
+        $(rut).inputmask({
+          mask: '9{1,2}.9{3}.9{3}-(K|k|9)',
+          casing: 'upper',
+          clearIncomplete: true,
+          numericInput: true,
+          positionCaretOnClick: 'none'
+        });
+      });    
+    </script> 
     </div>
 </div>
+
 </x-app-layout>

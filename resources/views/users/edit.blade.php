@@ -50,11 +50,14 @@
               <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Seleccione un rol</label>
               <select class="py-2 px-3 rounded-lg border-2 border-blue-300 mt-1 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent" name="idTipoU">
                 @forelse ($roles as $rol)
-                <option value="{{$rol->id}}">{{$rol->nombre}}</option>
+                  @if ($rol->id == $user->idTipoU)
+                  <option value="{{$rol->id}}" selected>{{$rol->nombre}}</option>
+                  @else
+                  <option value="{{$rol->id}}">{{$rol->nombre}}</option>                    
+                  @endif                
                 @empty
                 <option :value="old('')">No existen roles</option>         
                 @endforelse
-                <option :value="old('')" selected>Seleccionar</option>
               </select>
               </div>                     
               <div class="grid grid-cols-1 mt-5 mx-7">

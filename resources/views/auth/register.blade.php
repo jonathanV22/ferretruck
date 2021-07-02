@@ -44,13 +44,13 @@
                  <div class="mt-4">
                     <x-label for="direccion" :value="__('Direccion')" />
     
-                    <x-input id="rut" class="block mt-1 w-full" type="text" name="direccion" :value="old('direccion')" required autofocus />
+                    <x-input id="direccion" class="block mt-1 w-full" type="text" name="direccion" :value="old('direccion')" required autofocus />
                 </div>
                  <!-- Telefono -->
                  <div class="mt-4">
                     <x-label for="telefono" :value="__('Telefono')" />
     
-                    <x-input id="rut" class="block mt-1 w-full" type="number" name="telefono" :value="old('telefono')" required autofocus />
+                    <x-input id="telefono" class="block mt-1 w-full" type="number" name="telefono" :value="old('telefono')" required autofocus />
                 </div>
                 <!-- Radio button -->
                 <div class="mt-4 radio-group">
@@ -100,6 +100,21 @@
                         {{ __('Register') }}
                     </x-button>
                 </div>
-            </form>       
+            </form>  
+            <script src="js\jquery.js"></script>
+            <script src="inputmask\dist\jquery.inputmask.js"></script>
+            <script>
+            $(document).ready(function(){
+                var rut = document.getElementById("rut");
+                $(rut).inputmask({
+                    mask: '9{1,2}.9{3}.9{3}-(K|k|9)',
+                    casing: 'upper',
+                    clearIncomplete: true,
+                    numericInput: true,
+                    positionCaretOnClick: 'none'
+                });
+            });
+            
+            </script>     
     </x-auth-card>
 </x-guest-layout>

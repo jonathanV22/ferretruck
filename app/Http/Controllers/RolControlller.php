@@ -36,9 +36,13 @@ class RolControlller extends Controller
         $request->validate([
             'nombre'=>'required|string|max:255'
         ]);
+
         $rol=request()->except(['_token','_method']);  
+
         Rol::where('id','=',$id)->update( $rol);
+
         $role=Rol::findOrFail($id);
+        
         return view('roles.edit',compact('role'));    
     }
     public function destroy($id){
