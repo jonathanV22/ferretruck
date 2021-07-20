@@ -20,7 +20,8 @@
     
                     <x-input id="imagen" class="block mt-1 w-full" type="file" name="imagen" :value="old('imagen')" required autofocus />
                 </div>
-                    <!-
+                <input type="hidden" name="estado" value="0">
+                <input type="hidden" name="oferta" value="0">
                     <!-- Marca -->
                 <div class="mt-4">
                     <x-label for="marca" :value="__('Marca')" />
